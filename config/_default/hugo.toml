@@ -1,0 +1,16 @@
+baseURL = 'http://limewolf.top/'
+languageCode = "zh-cn"
+title = '莱姆狼🐺的小窝'
+theme = 'hugo-theme-monochrome'
+defaultContentLanguage = "zh-cn"
+enableEmoji = true
+paginate = 5
+enableGitInfo = true
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]

@@ -1,0 +1,50 @@
+[[navbar]]
+  identifier = "home"
+  name = "主页"
+  url = "/home/"
+  weight = 1
+
+[[navbar]]
+  identifier = "posts"
+  name = "文章"
+  url = "/posts/"
+  weight = 2
+
+  [[navbar]]
+    identifier = "series"
+    name = "系列文章"
+    url = "/posts/"
+    parent = "posts"
+    weight = 1
+
+  [[navbar]]
+    identifier = "tags"
+    name = "按标签分类"
+    url = "/posts/"
+    parent = "posts"
+    weight = 2
+
+  [[navbar]]
+    identifier = "categories"
+    name = "按文章类别分类"
+    url = "/posts/"
+    parent = "posts"
+    weight = 3
+
+[[navbar]]
+  identifier = "onedrive"
+  name = "网盘"
+  url = "https://pan.limewolf.top"
+  weight = 3
+
+[[navbar]]
+  identifier = "stories"
+  name = "建站日志"
+  url = "/stories/"
+  weight = 4 
+
+[[navbar]]
+  identifier = "about"
+  name = "关于"
+  url = "/about/"
+  weight = 5
