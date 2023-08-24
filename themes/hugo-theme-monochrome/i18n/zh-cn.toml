@@ -1,0 +1,7 @@
+"tags" = "标签"
+"recent_posts" = "最近文章"
+"toc" = "目录"
+"no_page_under_resouces" = '{{ .resources_path }} 下没有找到任何资源. 请检查 "{{ .resources_name }}" 的配置是否正确，并确认该目录下是否有页面存在'
+"resources_not_found" = '找不到资源，请检查 "{{ .resources_name }}" 的配置是否正确'
+"search" = "搜索文章"
+"changelogs" = "更新日志"
