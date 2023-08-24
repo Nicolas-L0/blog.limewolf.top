@@ -4,7 +4,7 @@ balloon_img_src: "limewolf.png"
 balloon_img_src_dark: "limewolf.png"
 balloon_circle: true
 balloon_resources: "/stories/storyline"
-description: "the home page of Limewolf"
+description: "莱姆狼的个人主页"
 zooming_js: false
 keywords:
 - hugo

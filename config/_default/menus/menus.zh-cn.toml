@@ -1,7 +1,7 @@
 [[navbar]]
   identifier = "home"
   name = "主页"
-  url = "/"
+  url = "/zh-cn"
   weight = 1
 
 [[navbar]]
@@ -34,23 +34,23 @@
 [[navbar]]
   identifier = "projects"
   name = "项目"
-  url = "/projects/"
+  url = "/projects"
   weight = 3
 
 [[navbar]]
   identifier = "stories"
   name = "建站日志"
-  url = "/stories/"
+  url = "/stories"
   weight = 4
-
-[[navbar]]
-  identifier = "onedrive"
-  name = "网盘"
-  url = "https://pan.limewolf.top"
-  weight = 5
 
 [[navbar]]
   identifier = "about"
   name = "关于"
   url = "/about"
+  weight = 5
+
+[[navbar]]
+  identifier = "onedrive"
+  name = "网盘"
+  url = "https://pan.limewolf.top"
   weight = 6

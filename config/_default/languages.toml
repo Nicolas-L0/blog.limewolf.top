@@ -1,0 +1,15 @@
+[zh-cn]
+contentDir = "content/zh-cn"
+languageName = "简中"
+languageCode = "zh-cn"
+title = "莱姆狼🐺的小窝"
+navbar_title = '欢迎来到狼🐺窝(Den)'
+weight = 1
+
+[en]
+contentDir = "content/en"
+languageName = "English"
+languageCode = "en"
+title = "Limewolf🐺's Den"
+navbar_title = "Welcome to Limewolf🐺's Den"
+weight = 2

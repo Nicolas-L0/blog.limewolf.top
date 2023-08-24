@@ -5,7 +5,7 @@ type: 'balloon'
 balloon_img_src: "icons/balloon.svg"
 balloon_img_src_dark: "icons/balloon_dark.svg"
 balloon_circle: false
-balloon_resources: "/stories/storyline"
+balloon_resources: "storyline"
 ---
 个人网站逐步搭建中...
 

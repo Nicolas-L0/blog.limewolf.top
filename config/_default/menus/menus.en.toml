@@ -1,0 +1,56 @@
+[[navbar]]
+  identifier = "home"
+  name = "Home"
+  url = "/en"
+  weight = 1
+
+[[navbar]]
+  identifier = "posts"
+  name = "Posts"
+  url = "/en/posts"
+  weight = 2
+
+  [[navbar]]
+    identifier = "series"
+    name = "Series"
+    url = "/en/series"
+    parent = "posts"
+    weight = 1
+
+  [[navbar]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/en/tags"
+    parent = "posts"
+    weight = 2
+
+  [[navbar]]
+    identifier = "categories"
+    name = "Categories"
+    url = "/en/categories"
+    parent = "posts"
+    weight = 3
+
+[[navbar]]
+  identifier = "projects"
+  name = "Projects"
+  url = "/en/projects"
+  weight = 3
+
+[[navbar]]
+  identifier = "stories"
+  name = "Story"
+  url = "/en/stories"
+  weight = 4
+
+[[navbar]]
+  identifier = "about"
+  name = "About"
+  url = "/en/about"
+  weight = 5
+
+[[navbar]]
+  identifier = "onedrive"
+  name = "OneDrive"
+  url = "https://pan.limewolf.top"
+  weight = 6
