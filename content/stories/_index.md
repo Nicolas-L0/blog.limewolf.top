@@ -1,4 +1,6 @@
 ---
+navbar_title: 这里是建站日志🪄
+title: 建站日志
 type: 'balloon'
 balloon_img_src: "icons/balloon.svg"
 balloon_img_src_dark: "icons/balloon_dark.svg"

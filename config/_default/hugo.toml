@@ -1,4 +1,4 @@
-baseURL = 'http://limewolf.top/'
+baseURL = 'https://limewolf.top'
 languageCode = "zh-cn"
 title = '莱姆狼🐺的小窝'
 theme = 'hugo-theme-monochrome'
