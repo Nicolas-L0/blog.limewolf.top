@@ -1,0 +1,10 @@
+#+title: "{{ replace .Name "-" " " | title }}"
+#+author: "Limewolf"
+#+description: ""
+#+date: {{ .Date }}
+#+keywords[]: 
+#+tags[]: 
+#+categories[]: 
+#+series[]: 
+
+* {{ replace .Name "-" " " | title }}
