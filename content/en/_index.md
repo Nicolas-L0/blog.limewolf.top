@@ -5,6 +5,7 @@ balloon_img_src_dark: "limewolf.png"
 balloon_circle: true
 balloon_resources: "/stories/storyline"
 description: "the home page of Limewolf"
+navbar_title: "Welcome to Limewolf🐺's Den"
 zooming_js: false
 keywords:
 - hugo

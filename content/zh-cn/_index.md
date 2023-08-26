@@ -5,6 +5,7 @@ balloon_img_src_dark: "limewolf.png"
 balloon_circle: true
 balloon_resources: "/stories/storyline"
 description: "莱姆狼的个人主页"
+navbar_title: '欢迎来到狼🐺窝(Den)'
 zooming_js: false
 keywords:
 - hugo

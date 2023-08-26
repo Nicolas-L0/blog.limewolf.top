@@ -5,7 +5,7 @@ languageCode = "zh-cn"
 title = "莱姆狼🐺的小窝"
 weight = 1
     [zh-cn.params]
-        navbar_title = '欢迎来到狼🐺窝(Den)'
+        navbar_title = '莱姆狼🐺的小窝'
 
 
 [en]
@@ -15,4 +15,4 @@ languageCode = "en"
 title = "Limewolf🐺's Den"
 weight = 2
     [en.params]
-        navbar_title = "Welcome to Limewolf🐺's Den"
+        navbar_title = "Limewolf🐺's Den"
