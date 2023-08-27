@@ -1,0 +1,152 @@
+#+title: 使用giscus为org-mode的Hugo博客文章建立评论区
+#+author: "Limewolf"
+#+description: "基于个人实践经验简单介绍了如何使用giscus为Hugo博客中org-mode的文章建立评论区"
+#+date: 2023-08-27T13:23:50+08:00
+#+keywords[]: hugo github discus org-mode
+#+tags[]: hugo blog giscus org-mode
+#+categories[]: 博客技术
+#+series[]: Hugo历险记
+
+#+begin_quote
+本文是基于个人从零实践经验，\\
+简要介绍了笔者是如何使用giscus工具为本站中 ~.md~ ~.org~ 格式的文章挂载评论区。 
+#+end_quote
+
+-----
+
+* 使用giscus为org-mode的Hugo博客文章建立评论区
+
+** discus简介
+[[https://github.com/giscus/giscus][giscus]]，一款基于[[https://docs.github.com/en/discussions][Github Discussions]]的评论区系统，它与另一款基于Github Issues的评论区系统[[uhttps://utteranc.es/][utterances]]极为神似。
+
+giscus的作者[[https://laymonage.com/][laymonage]] (Sage Abdullahe)在其博客的[[https://laymonage.com/posts/giscus][Introducing giscus]]一文中提到：
+
+#+begin_quote
+Ta也曾是utterances的用户，直到Github推出discussions功能时，使用discussions替代issues作为评论区系统后端的想法应运而生。
+#+end_quote
+
+Github方面在推出discussions时也曾这样说过：
+#+begin_quote
+"Until now, GitHub only offered issues and pull requests as places to have these conversations. But issues and pull requests both have a linear format—well suited for merging code, but not for creating a community knowledge base. *Conversations need their own place* —that’s what GitHub Discussions is for."
+
+—— from [[https://github.blog/2020-05-06-new-from-satellite-2020-github-codespaces-github-discussions-securing-code-in-private-repositories-and-more/#discussions][New from Satellite 2020: GitHub Discussions, Codespaces, securing code in private repositories, and more]]
+#+end_quote
+
+简言之，相较于Issues，Discussions更适合用来"discuss": "*Conversations need their own place*"
+
+多说无益，在二者的主页下方就有功能展示，读者可以自行对比体验：\\
+[[https://utteranc.es/][utteranc.es]], [[https://giscus.app/][giscus]]
+
+** 如何使用
+根据[[https://giscus.app/][giscus主页]]上的所需信息，不难归纳出使用giscus需要以下三个步骤：
+
+1. github仓库配置
+2. 生成嵌入代码
+3. 启用giscus
+
+*** github仓库配置
+giscus基于github仓库的discussions功能，所以我们需要一个仓库并开通discussions来作为其后端。你可以选择 _A. 新建一个全新的仓库_ 专用于网站评论区，或者像我一样 _直接使用网站github仓库_ 。
+
+{{< color-block style="warning" >}}
+⚠️注意：作为评论区后端的github仓库必须是 *Public/公开* 仓库
+{{< /color-block >}}
+
+**** 启用Github Discussions
+被选为评论区后端的github仓库首页 -> setting选项卡 -> 左侧选择General -> 右侧Features栏目下 -> 勾选Discussions
+
+**** 安装giscus应用
+进入到[[https://github.com/apps/giscus][github.com/apps/giscus]]即可将giscus安装到指定的github仓库
+
+*** 生成嵌入代码
+[[https://giscus.app/][giscus主页]]提供了极为简洁易操作的代码生成流程，只需要用户填表即可得到所需的代码：
+1. 语言：我需要为博客中英文页面使用不同的评论区UI语言。\\
+   其实也可以手动修改 ~data-lang="zh-CN"~ 或 ~data-lang="en"~
+2. 仓库：按格式填入指定仓库，页面会自动检测目标仓库是否符合要求，并获取所需信息用于生成代码。
+3. 映射关系：
+   - pathname :: 以本文为例，将会是\\
+      ~/posts/20230827-b49c5a4d/~
+   - URL :: 笔者没有测试过此项，可能会是\\
+      ~blog.limewolf.top/posts/20230827-b49c5a4d/~ 这样的格式吧
+   - <title> :: 以本文为例，是\\
+      ~使用giscus为org-mode的Hugo博客文章建立评论区 - 莱姆狼🐺的小窝~
+   - og:title :: 如果博客启用了[[https://ogp.me][Open Graph protocol]]，以本文为例，是\\
+      ~使用giscus为org-mode的Hugo博客文章建立评论区~
+   - 特定字符串 :: 顾名思义，自定义特定字符串
+   - 编号 :: 直接指定特定编号的discussion为评论区
+   -----
+   由于我希望同一篇文章的不同语言版本共用同一个评论区（同一话题，一起讨论，体验不割裂），所以我选择了使用 ~特定字符串~ 来映射discussion与giscus。\\
+   例如，在本站的guestbook中，giscus代码中是这样配置的：
+   #+begin_src
+   data-mapping="specific"
+   data-term="Comment: guestbook"
+   #+end_src
+   其关联的三者是这样的：\\
+   [[https://blog.limewolf.top/guestbook][访客留言版(guestbook中文页面)]]，[[https://blog.limewolf.top/en/guestbook][guestbook英文页]]，[[https://github.com/Nicolas-L0/blog.limewolf.top/discussions/7][github讨论区]]
+
+4. Discussion分类：正如作者所言，确保你的discussion不会被隔壁小朋友捣乱就请乖乖选择 ~announcements~ ，并勾选只匹配该分类。
+5. 特性：一些顾名思义的特性。
+   
+*** 启用giscus
+**** 在markdown页面中启用
+直接将[[https://giscus.app/][giscus主页]]中生成的html代码放进你期望插入评论区的位置（例如文章末尾）即可。
+**** 在org-mode页面中启用
+需要将html代码包含在export html中，像这样：（可以插入到文章任意位置）
+#+begin_src html
+#+BEGIN_EXPORT HTML
+<script src="https://giscus.app/client.js"
+        ......
+        crossorigin="anonymous"
+        async>
+</script>
+#+END_EXPORT
+#+end_src
+
+#+BEGIN_EXPORT html
+（tips: 插入export html的快捷键是 <kbd>C-c C-, h</kbd>）
+#+END_EXPORT
+
+-----
+
+#+begin_quote
+Fin.
+
+giscus的使用比我预想中简单太多太多，\\
+我很快地就上手用它制作了访客留言版，\\
+仅在将他嵌入到我的 ~.org~ 文章中时遇到了一点点的阻碍。
+
+#+begin_quote
+/感谢强大的chatgpt协助我跨越阻碍/
+#+end_quote
+
+所以本文也并无更多细节可以描述，吧？\\
+欢迎在评论区讨论和提问~
+
+#+begin_quote
+/感谢giscus及其作者laymonage为本博客的互动性提供了关键的支持/
+#+end_quote
+
+感谢阅览！\\
+:)
+#+end_quote
+
+
+#+BEGIN_EXPORT HTML
+<script src="https://giscus.app/client.js"
+        data-repo="Nicolas-L0/blog.limewolf.top"
+        data-repo-id="R_kgDOKJYObQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOKJYObc4CY4qA"
+        data-mapping="specific"
+        data-term="Comment: Disqus for Org-Mode Hugo Blog Posts"
+        data-strict="1"
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="bottom"
+        data-theme="noborder_light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+#+END_EXPORT
+

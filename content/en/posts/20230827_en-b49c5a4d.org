@@ -1,0 +1,35 @@
+#+title: Setting Up a Comment Section Using Disqus for Org-Mode Hugo Blog Posts
+#+author: "Limewolf"
+#+description: "A Brief Guide on How to Set Up a Comment Section Using Disqus for Org-Mode Articles in Hugo Blogs"
+#+date: 2023-08-27T13:23:50+08:00
+#+keywords[]: hugo github discus org-mode
+#+tags[]: hugo blog discus org-mode
+#+categories[]: Blog_Technology
+#+series[]: Hugo_Adventure
+
+* Setting Up a Comment Section Using Disqus for Org-Mode Hugo Blog Posts
+
+There is currently no English version available. \\
+Please visit the Chinese version of the article.
+
+[[/posts//20230827-b49c5a4d/][使用discus为org-mode的Hugo博客文章建立评论区]]
+
+#+BEGIN_EXPORT HTML
+<script src="https://giscus.app/client.js"
+        data-repo="Nicolas-L0/blog.limewolf.top"
+        data-repo-id="R_kgDOKJYObQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOKJYObc4CY4qA"
+        data-mapping="specific"
+        data-term="Comment: Disqus for Org-Mode Hugo Blog Posts"
+        data-strict=""
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="bottom"
+        data-theme="noborder_light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+#+END_EXPORT
