@@ -16,7 +16,7 @@
 
 * 使用giscus为org-mode的Hugo博客文章建立评论区
 
-** discus简介
+** 1. discus简介
 [[https://github.com/giscus/giscus][giscus]]，一款基于[[https://docs.github.com/en/discussions][Github Discussions]]的评论区系统，它与另一款基于Github Issues的评论区系统[[uhttps://utteranc.es/][utterances]]极为神似。
 
 giscus的作者[[https://laymonage.com/][laymonage]] (Sage Abdullahe)在其博客的[[https://laymonage.com/posts/giscus][Introducing giscus]]一文中提到：
@@ -37,27 +37,27 @@ Github方面在推出discussions时也曾这样说过：
 多说无益，在二者的主页下方就有功能展示，读者可以自行对比体验：\\
 [[https://utteranc.es/][utteranc.es]], [[https://giscus.app/][giscus]]
 
-** 如何使用
+** 2. 如何使用
 根据[[https://giscus.app/][giscus主页]]上的所需信息，不难归纳出使用giscus需要以下三个步骤：
 
 1. github仓库配置
 2. 生成嵌入代码
 3. 启用giscus
 
-*** github仓库配置
+*** 2.1 github仓库配置
 giscus基于github仓库的discussions功能，所以我们需要一个仓库并开通discussions来作为其后端。你可以选择 _A. 新建一个全新的仓库_ 专用于网站评论区，或者像我一样 _直接使用网站github仓库_ 。
 
 {{< color-block style="warning" >}}
 ⚠️注意：作为评论区后端的github仓库必须是 *Public/公开* 仓库
 {{< /color-block >}}
 
-**** 启用Github Discussions
+**** 2.1.1 启用Github Discussions
 被选为评论区后端的github仓库首页 -> setting选项卡 -> 左侧选择General -> 右侧Features栏目下 -> 勾选Discussions
 
-**** 安装giscus应用
+**** 2.1.2 安装giscus应用
 进入到[[https://github.com/apps/giscus][github.com/apps/giscus]]即可将giscus安装到指定的github仓库
 
-*** 生成嵌入代码
+*** 2.2 生成嵌入代码
 [[https://giscus.app/][giscus主页]]提供了极为简洁易操作的代码生成流程，只需要用户填表即可得到所需的代码：
 1. 语言：我需要为博客中英文页面使用不同的评论区UI语言。\\
    其实也可以手动修改 ~data-lang="zh-CN"~ 或 ~data-lang="en"~
@@ -86,10 +86,10 @@ giscus基于github仓库的discussions功能，所以我们需要一个仓库并
 4. Discussion分类：正如作者所言，确保你的discussion不会被隔壁小朋友捣乱就请乖乖选择 ~announcements~ ，并勾选只匹配该分类。
 5. 特性：一些顾名思义的特性。
    
-*** 启用giscus
-**** 在markdown页面中启用
+*** 2.3 启用giscus
+**** 2.3.1 在markdown页面中启用
 直接将[[https://giscus.app/][giscus主页]]中生成的html代码放进你期望插入评论区的位置（例如文章末尾）即可。
-**** 在org-mode页面中启用
+**** 2.3.2 在org-mode页面中启用
 需要将html代码包含在export html中，像这样：（可以插入到文章任意位置）
 #+begin_src html
 #+BEGIN_EXPORT HTML
