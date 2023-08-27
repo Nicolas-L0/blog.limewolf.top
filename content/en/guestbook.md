@@ -14,7 +14,7 @@ toc: false
 # <center>🐺Feel free to leave something!🐺</center>
 
 <script src="https://giscus.app/client.js"
-        data-repo="Nicolas-L0/limewolf.top"
+        data-repo="Nicolas-L0/blog.limewolf.top"
         data-repo-id="R_kgDOKJYObQ"
         data-category="Announcements"
         data-category-id="DIC_kwDOKJYObc4CY4qA"
