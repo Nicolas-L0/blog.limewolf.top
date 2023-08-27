@@ -7,6 +7,8 @@
 #+categories[]: Blog_Technology
 #+series[]: Hugo_Adventure Exploring_Vercel
 
+* Creating a Personal Blog with Hugo and Vercel
+
 There is currently no English version available. \\
 Please visit the Chinese version of the article.
 
