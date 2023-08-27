@@ -44,13 +44,19 @@
   weight = 4
 
 [[navbar]]
+  identifier = "guestbook"
+  name = "访客留言版"
+  url = "/guestbook"
+  weight = 5
+
+[[navbar]]
   identifier = "about"
   name = "关于"
   url = "/about"
-  weight = 5
+  weight = 6
 
 [[navbar]]
   identifier = "onedrive"
   name = "网盘"
   url = "https://pan.limewolf.top"
-  weight = 6
+  weight = 7

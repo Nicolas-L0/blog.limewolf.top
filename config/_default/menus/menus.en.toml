@@ -44,13 +44,19 @@
   weight = 4
 
 [[navbar]]
+  identifier = "guestbook"
+  name = "Guestbook"
+  url = "/en/guestbook"
+  weight = 5
+
+[[navbar]]
   identifier = "about"
   name = "About"
   url = "/en/about"
-  weight = 5
+  weight = 6
 
 [[navbar]]
   identifier = "onedrive"
   name = "OneDrive"
   url = "https://pan.limewolf.top"
-  weight = 6
+  weight = 7
