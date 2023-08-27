@@ -1,4 +1,4 @@
-#+title: "{{ replace .Name "-" " " | title }}"
+#+title: {{ replace .Name "-" " " | title }}
 #+author: "Limewolf"
 #+description: ""
 #+date: {{ .Date }}
@@ -14,7 +14,7 @@ Please visit the Chinese version of the article.
 
 [[/posts//20230827-b49c5a4d/][使用discus为org-mode的Hugo博客文章建立评论区]]
 
-#+BEGIN_EXPORT HTML
+#+BEGIN_EXPORT html
 <script src="https://giscus.app/client.js"
         data-repo="Nicolas-L0/blog.limewolf.top"
         data-repo-id="R_kgDOKJYObQ"
@@ -22,10 +22,10 @@ Please visit the Chinese version of the article.
         data-category-id="DIC_kwDOKJYObc4CY4qA"
         data-mapping="specific"
         data-term="Comment: Disqus for Org-Mode Hugo Blog Posts"
-        data-strict="0"
+        data-strict="1"
         data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
+        data-emit-metadata="1"
+        data-input-position="bottom"
         data-theme="noborder_light"
         data-lang="zh-CN"
         data-loading="lazy"
