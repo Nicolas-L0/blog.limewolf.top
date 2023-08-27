@@ -1,7 +1,7 @@
 footer = 'Copyright © 2023 by Nicolas Lai | Powered by <a rel="Vercel" href="https://vercel.com/">Vercel</a> and <a rel="Hugo" href="https://gohugo.io/">Hugo</a> with <a rel="monochrome" href="https://github.com/kaiiiz/hugo-theme-monochrome">monochrome</a> </br> This site and its content are licensed under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>'
 copyright = "Copyright © 2023 by Nicolas Lai | CC-BY-NC-SA"
 author = "LimeWolf"
-color_scheme = "dark"
+color_scheme = "light"
 
 enable_zooming_js = true
 enable_toc = true
