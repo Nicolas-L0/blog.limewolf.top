@@ -1,4 +1,4 @@
-#+title: Setting Up a Comment Section Using Disqus for Org-Mode Hugo Blog Posts
+#+title: Setting Up a Comment Section With Disqus for Org-Mode Hugo Blog Posts
 #+author: "Limewolf"
 #+description: "A Brief Guide on How to Set Up a Comment Section Using Disqus for Org-Mode Articles in Hugo Blogs"
 #+date: 2023-08-27T13:23:50+08:00
@@ -7,12 +7,138 @@
 #+categories[]: Blog_Technology
 #+series[]: Hugo_Adventure
 
-* Setting Up a Comment Section Using Disqus for Org-Mode Hugo Blog Posts
+#+begin_quote
+This article is based on my personal hands-on experience and provides a brief overview of how I used the giscus to add a comment section to articles in both the ~.md~ and ~.org~ formats posts on my website.
 
-There is currently no English version available. \\
-Please visit the Chinese version of the article.
+This post is also available in: [[/posts/20230827-b49c5a4d/][中文]]
+#+end_quote
 
-[[/posts//20230827-b49c5a4d/][使用discus为org-mode的Hugo博客文章建立评论区]]
+-----
+
+* Setting Up a Comment Section with Disqus for Org-Mode Hugo Blog Posts
+
+** 1. Introduction to giscus
+[[https://github.com/giscus/giscus][giscus]] is a comment system based on [[https://docs.github.com/en/discussions][Github Discussions]]. It is quite similar to another comment system based on Github Issues, [[https://utteranc.es/][utterances]].
+
+The author of giscus, [[https://laymonage.com/][laymonage]] (Sage Abdullahe), mentioned in his/her blog post [[https://laymonage.com/posts/giscus][Introducing giscus]]:
+
+#+begin_quote
+He/She was an utterances user, until Github introduced the discussions feature, which inspired the idea of using discussions as a backend for the comment system.
+#+end_quote
+
+When Github introduced discussions, they also stated:
+
+#+begin_quote
+"Until now, GitHub only offered issues and pull requests as places to have these conversations. But issues and pull requests both have a linear format—well suited for merging code, but not for creating a community knowledge base. *Conversations need their own place* —that’s what GitHub Discussions is for."
+
+—— from [[https://github.blog/2020-05-06-new-from-satellite-2020-github-codespaces-github-discussions-securing-code-in-private-repositories-and-more/#discussions][New from Satellite 2020: GitHub Discussions, Codespaces, securing code in private repositories, and more]]
+#+end_quote
+
+In short, compared to Issues, Discussions is more suitable for "discussions": "*Conversations need their own place.*"
+
+Rather than further elaborating, there are demonstrations available on the homepages of both systems. You can explore and compare the functionalities themselves:\\
+[[https://utteranc.es/][utteranc.es]], [[https://giscus.app/][giscus]]
+
+** 2. How to use giscus
+Based on the information provided on the [[https://giscus.app/][giscus homepage]], it's easy to summarize the three steps required to use giscus:
+
+1. Configure your GitHub repository.
+2. Generate the embedding code.
+3. Enable giscus.
+
+*** 2.1 Github Repository Configuration
+giscus relies on the GitHub repository's discussions feature, so you'll need a repository with discussions enabled as its backend. You can choose to _create a brand-new repository_ dedicated to the website's comments section, or, like me, _use your existing website GitHub repository_.
+
+{{< color-block style="warning" >}}
+⚠️ Note: The GitHub repository that serves as the backend for the comments section must be *Public*.
+{{< /color-block >}}
+
+**** 2.1.1 Enable GitHub Discussions
+To enable GitHub Discussions for the selected repository to serve as the comments backend: Go to the repository's homepage -> Click on the Settings tab -> Select General on the left side -> Under the Features section on the right side -> Check the Discussions option.
+
+**** 2.1.2 Install the giscus App
+Visit [[https://github.com/apps/giscus][github.com/apps/giscus]] and install giscus for the specified GitHub repository.
+
+
+*** 2.2 Generate Embed Code
+The [[https://giscus.app/][giscus website]] provides a straightforward and user-friendly process for generating the required code. Simply fill out the form to obtain the necessary code:
+
+- Language: I need to use different comment section UI languages for the English and Chinese versions of the blog. So I manually modify ~data-lang="zh-CN"~ or ~data-lang="en"~.
+  
+- Repository: Enter the repository in the specified format. The page will automatically check if the target repository meets the requirements and retrieve the necessary information to generate the code.
+
+- Mapping:
+  - pathname :: For example, in this article, it will be ~/posts/20230827_en-b49c5a4d/~.
+  - URL :: I haven't tested this, but it might be in the format ~blog.limewolf.top/posts/20230827_en-b49c5a4d/~.
+  - <title> :: For example, in this article, it's ~Setting Up a Comment Section With Disqus for Org-Mode Hugo Blog Posts - Limewolf🐺's Den~.
+  - og:title :: If your blog uses [[https://ogp.me][Open Graph protocol]], it might be ~Setting Up a Comment Section with Disqus for Org-Mode Hugo Blog Posts~.
+  - Specific Term :: As the name suggests, customize a specific term.
+  - Number :: Specify a specific discussion number for the comment section.
+  -----
+  Since I want different language versions of the same article to share the same comment section (to discuss the same topic together and have a seamless experience), I chose to use the ~Specific Term~ to map the discussion to giscus. For example, in the guestbook of this site, the giscus code is configured like this:
+
+  #+begin_src
+  data-mapping="specific"
+  data-term="Comment: guestbook"
+  #+end_src
+
+  The associated pages are as follows:\\
+  [[https://blog.limewolf.top/guestbook][Guestbook (Chinese page)]], [[https://blog.limewolf.top/en/guestbook][Guestbook (English page)]], [[https://github.com/Nicolas-L0/blog.limewolf.top/discussions/7][GitHub Discussions]].
+
+- Discussion Category: As the author suggests, to make sure your discussions are not disrupted, choose announcements and check "Only match this category."
+
+- Features: These are self-explanatory features.
+
+*** 2.3 Enable giscus
+**** 2.3.1 Enable in Markdown Pages
+Simply place the HTML code generated from the [[https://giscus.app/][giscus website]] where you want to insert the comment section (e.g., at the end of the article).
+
+**** 2.3.2 Enable in Org-Mode Pages
+You need to include the HTML code within an ~export HTML~ block, like this: (You can insert it anywhere in the article)
+#+begin_src html
+#+BEGIN_EXPORT HTML
+<script src="https://giscus.app/client.js"
+        ......
+        crossorigin="anonymous"
+        async>
+</script>
+#+END_EXPORT
+#+end_src
+
+#+BEGIN_EXPORT html
+(Tip: The shortcut to insert an export HTML block is <kbd>C-c C-, h</kbd>)
+#+END_EXPORT
+
+-----
+
+#+begin_quote
+Fin.
+
+Using giscus turned out to be much simpler than I expected. I quickly got the hang of using it to create a guestbook for my site. The only minor obstacle I encountered was when embedding it into my ~.org~ articles.
+#+begin_quote
+/Thanks to the powerful assistance of ChatGPT in helping me overcome the obstacles./
+#+end_quote
+So, there are no more details to describe in this article, right?\\
+Feel free to discuss and ask questions in the comment section!
+#+begin_quote
+/Thanks to giscus and its author laymonage for providing crucial support for interactivity on this blog./
+#+end_quote
+
+
+Thank you for reading! \\
+:)
+#+end_quote
+
+
+
+
+
+
+
+
+
+
+
 
 #+BEGIN_EXPORT HTML
 <script src="https://giscus.app/client.js"
