@@ -14,6 +14,8 @@ Its purpose is to provide a reference for friends with similar needs on how to u
 This post is also available in: [[/posts/20230825-1263f3b5/][中文]]
 #+end_quote
 
+-----
+
 * Creating a Personal Blog with Hugo and Vercel
 ** 1. Static Website Generators
 A static website generator is a tool that helps bloggers create static websites in an efficient way by converting articles written in markup languages like Markdown.
