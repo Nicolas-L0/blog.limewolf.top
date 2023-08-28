@@ -10,6 +10,8 @@
 #+begin_quote
 本文主要记录了我个人从零建站的主要过程，并不会事无巨细地记叙。\\
 旨在为拥有类似需求的朋友提供使用Hugo+Vercel建站的参考。
+
+This post is also available in: [[/en/posts/20230825_en-1263f3b5/][English]]
 #+end_quote
 -----
 * Hugo+Vercel建立个人博客
@@ -89,7 +91,7 @@ PS C:\Users\NicEu\OneDrive\Documents\_00PersonalDocuments\Mysite\limewolf.top>
 直接以本地服务器的方式运行网站：（此模式下网站会随着内容改动实时更新）\\
 ~hugo server~
 
-或者，将网站打包发布在其文件夹下的 ~/public~ 中，以便后续部署到线上：
+或者，将网站打包发布在其文件夹下的 ~/public~ 中，以便后续部署到线上：\\
 ~hugo~
 
 *** 1.5 创建文章
@@ -110,7 +112,8 @@ PS C:\Users\NicEu\OneDrive\Documents\_00PersonalDocuments\Mysite\limewolf.top>
 #+series[]: Hugo历险记 探索Vercel
 #+end_src
 
-它们有些用于分类筛选文章，有些便于搜索引擎发现这篇文章。\\
+它们有些用于分类筛选文章，有些便于搜索引擎发现这篇文章。
+
 当然，属性的功能远不止于此，[[https://gohugo.io/getting-started/configuration/#all-configuration-settings][Hugo官方文档：all setting]]对此有很详细的说明。
 
 *** 1.6 基于主题优化网站
@@ -127,8 +130,7 @@ PS C:\Users\NicEu\OneDrive\Documents\_00PersonalDocuments\Mysite\limewolf.top>
 3. 使用代码托管平台。易用且免费，同样也可以满足上述硬件、网络、网安等需求，但依赖外部平台的行为也会带来网站文件私密性等问题
 #+end_quote
 
-以上，根据自身需求选择合适的方案。
-本文我将以Github为例，这也是本站所采用的方案。
+以上，根据自身需求选择合适的方案。本文我将以Github为例，这也是本站所采用的方案。
 
 #+begin_quote
 日常使用Github保管代码的最简流程基本为：

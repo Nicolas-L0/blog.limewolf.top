@@ -7,12 +7,253 @@
 #+categories[]: Blog_Technology
 #+series[]: Hugo_Adventure Exploring_Vercel
 
+#+begin_quote
+This article primarily documents the main process of building this site from scratch, but it will not go into every detail.
+Its purpose is to provide a reference for friends with similar needs on how to use Hugo and Vercel for website creation.
+
+This post is also available in: [[/posts/20230825-1263f3b5/][中文]]
+#+end_quote
+
 * Creating a Personal Blog with Hugo and Vercel
+** 1. Static Website Generators
+A static website generator is a tool that helps bloggers create static websites in an efficient way by converting articles written in markup languages like Markdown.
 
-There is currently no English version available. \\
-Please visit the Chinese version of the article.
+Regarding the topic of /"How to Choose a Suitable Static Website Generator for Yourself"/, there have been numerous professional comparisons and discussions on forums like Zhihu. Therefore, I won't go into that discussion here.
 
-[[/posts//20230825-1263f3b5/][Hugo+Vercel建立个人博客]]
+The primary reason I chose [[https://gohugo.io/][Hugo]] is its /naive support for ~.org~ file/. This feature is significant for someone like me who is accustomed to using [[https://www.gnu.org/software/emacs/][Emacs]] and its [[https://orgmode.org/][org-mode]].
+
+#+begin_quote
+
+The Hugo official website provides a fairly detailed [[https://gohugo.io/getting-started/quick-start/][Quick Start Guide]], which involves the following six steps:
+
+1. Install Hugo
+2. Install Git
+3. Create a Website
+4. Choose a Theme
+5. Create Content
+6. Build and Run the Static Site
+
+#+end_quote
+
+Below, I will briefly document my website creation process.
+
+*** 1.1 Install Hugo and Git
+In my Windows 11 environment, I prefer to use the Microsoft-provided package manager, ~winget~, to install open-source software:
+
+Open PowerShell and enter: \\
+~winget install Hugo.Hugo.Extended Git.Git~ \\
+Wait patiently for the installation to complete.\\
+(Of course, you can also use cmd for the aforementioned and subsequent steps.)
+
+This step's duration depends on your internet connection. If you find ~winget~ too slow, you can also download the compressed package and configure system environment variables according follow the [[https://gohugo.io/installation/windows/#prebuilt-binaries][Hugo doc: prebuilt]] instructions. (Personally, I don't prefer this less manageable approach.)
+
+
+After the installation is complete, enter the following in PowerShell:\\
+~hugo version~\\
+If you see a similar output like below, it indicates that Hugo has been successfully installed.
+#+BEGIN_SRC
+hugo v0.117.0-b2f0696cad918fb61420a6aff173eb36662b406e+extended windows/amd64 BuildDate=2023-08-07T12:49:48Z VendorInfo=gohugoio
+#+END_SRC
+
+Similarly, validate the installation of Git using the same method:\\
+~git version~\\
+If you receive a version output like below, it indicates that Git has been successfully installed.
+#+BEGIN_SRC
+git version 2.38.1.windows.1
+#+END_SRC
+
+*** 1.2 Create Hugo website
+After creating the ~Mysite~ folder to store your website, navigate to the folder and right-click on a blank space. Choose ~Open in Terminal~ .\\
+(Alternatively, you can also use the ~cd~ command in cmd or PowerShell to navigate to this folder.)
+#+BEGIN_SRC
+PS C:\Users\NicEu\OneDrive\Documents\_00PersonalDocuments\Mysite>
+#+END_SRC
+
+Following the instructions from the [[https://gohugo.io/getting-started/quick-start/#create-a-site][Hugo doc: create a site]], enter the following command to create the necessary files for your website:\\
+(Note that "Limewolf.top" is my website name; replace it with your own.)\\
+~hugo new site Limewolf.top~
+
+Navigate to the folder where your website is located:\\
+~cd Limewolf.top~\\
+Currently, the terminal should display a path similar to:
+#+BEGIN_SRC
+PS C:\Users\NicEu\OneDrive\Documents\_00PersonalDocuments\Mysite\limewolf.top>
+#+END_SRC
+
+*** 1.3 Set up the Theme
+Note: I use [[https://kaiiiz.github.io/hugo-theme-monochrome/setup/][Monochrome]] as my website theme, which is different from the themes used in the Hugo doc.
+
+1. Initialize a Git project in the website folder (Git is a distributed version control tool):\\
+   ~git init~
+2. Download the theme file package as a submodule and add it to the Git project of your website:\\
+   ~git submodule add https://github.com/kaiiiz/hugo-theme-monochrome.git themes/hugo-theme-monochrome~
+3. Modify the website configuration file to use the newly downloaded theme:\\
+   ~echo "theme = 'hugo-theme-monochrome'" >> hugo.toml~
+
+*** 1.4 Generate the Website and Run 
+Run the website with local server: (In this mode, the website will update in real-time as you make changes):\\
+~hugo server~
+
+Alternatively, package the website for publishing by placing it in the ~public~ folder within its directory, for future deployment online:\\
+~hugo~
+
+*** 1.5 Create posts
+This step offers a lot of flexibility. Following the steps outlined in the [[https://gohugo.io/getting-started/quick-start/#add-content][Hugo doc: add content]], you can use the default template with title and date attributes to create articles:\\
+~hugo new content posts/my-first-post.md~
+
+In addition, you can also create articles completely manually, but you'll need some understanding of the preset attributes in the template files.
+
+For example, the attributes for this article include:
+#+begin_src
+#+title: Creating a Personal Blog with Hugo and Vercel
+#+author: "Limewolf"
+#+description: "A Guide on How to Build a Website from Scratch Using Hugo and Vercel"
+#+date: 2023-08-26T02:56:54+08:00
+#+keywords[]: hugo vercel github
+#+tags[]: hugo vercel blog
+#+categories[]: Blog_Technology
+#+series[]: Hugo_Adventure Exploring_Vercel
+#+end_src
+
+Some of them are used for categorizing and filtering articles, while others help search engines discover this article.
+
+Of course, the functionality of attributes goes beyond just this, and the [[https://gohugo.io/getting-started/configuration/#all-configuration-settings][Hugo doc: all setting]] provides detailed explanations.
+
+*** 1.6 Optimizing the Website Based on the Theme
+This step is highly personalized and can be explored almost infinitely. I won't go into detail here.
+For the journey of this website in this regard, you can read about it in the [[/en/stories][Story]] section.
+
+** 2. Hosting the Website in the Cloud
+Whether it is GitHub, GitLab, or Gitee, these platforms offer online code hosting services based on Git, which is a crucial part of leveraging the distributed version control feature of Git.
+
+#+begin_quote
+In simple terms, there are three main methods to make your website accessible to other users on the internet:
+
+1. Self-hosting on your existing hardware and opening internet access to it, which is doable but challenging. (This approach requires a network environment capable of handling website traffic, a dedicated IP address or a strategy for internal network penetration, cybersecurity measures to ensure stable website operation, and the electrical resources to keep the server running.)
+
+2. Renting a cloud server. Numerous providers like Tencent Cloud, Alibaba Cloud, and Huawei Cloud offer this service. Cloud servers are likely the best solution for addressing hardware, network, and cybersecurity needs. However, as a personal website owner, I might consider this option only when my website reaches a certain level of traffic and scale.
+
+3. Using code hosting platforms. These platforms are user-friendly and often free. They can also satisfy hardware, network, and cybersecurity requirements. However, relying on external platforms might raise concerns about the privacy of website files and other related issues.
+#+end_quote
+
+Above all, choose the appropriate solution based on your own needs. In this article, I will use GitHub as an example, which is also the solution adopted by this website.
+
+#+begin_quote
+The simplest workflow for using GitHub on a daily basis generally involves the following steps:
+
+1. Create a local Git project & create a GitHub repository and link it to the local project. (Or clone an existing repository from GitHub to your local machine)
+2. Save changes in the local Git project
+3. Push the local Git project to GitHub
+4. Repeat steps 2 and 3
+#+end_quote
+
+*** Create a Github Repository
+As mentioned earlier, we've already created a Git project inside the website folder. Now, the next step is to create a repository on GitHub and link the local Git project to the GitHub repository.
+
+#+begin_quote
+⚠️ Note: If you're new to using Git, you may need to perform some basic configurations. You can refer to the [[https://docs.github.com/en/get-started/quickstart/set-up-git][GitHub doc: set up Git]] to complete the following two steps:
+
+1. Configure your Git username and email.
+2. Configure either HTTPS or SSH authentication.
+   
+For further reading, you can explore the [[https://docs.github.com/en/get-started/using-git/about-git][GitHub doc: about Git]] and the [[https://training.github.com/downloads/submodule-vs-subtree-cheat-sheet/][Git cheat sheet]].
+#+end_quote
+After registering and logging in to GitHub, you can follow the [[https://docs.github.com/en/get-started/quickstart/create-a-repo][GitHub doc: create a repo]] to quickly create a repository. Here are the steps:
+- ~Repository name~: This is the name of your repository. I named mine as Limewolf.top.
+- ~Description~: You can provide a brief description for the repository, but it's optional.
+- Repository visibility: I chose ~Public~ for the repository. The reasons are:
+  1. All the technologies used for this site are open source. If I make any personalized changes to these technologies in the future, I want them to remain open source.
+  2. The content I put on the website is meant to be publicly accessible.
+- ~.gitignore~: In a Git project folder, not all files need to be included in the Git repository. The gitignore file serves as a blacklist to exclude certain files.\\
+  I chose ~None~ because I needed a completely new empty repository. I configured this file locally, and I'll upload it to the GitHub repository later.   Depending on your needs, you can find various templates for this file. Here's the ~.gitignore~ file for this site (modified from ~themes\hugo-theme-monochrome\exampleSite.gitignore~): [[https://github.com/Nicolas-L0/limewolf.top/blob/master/.gitignore][GitHub]], [[https://pan.limewolf.top/api/raw/?path=/Documents/Limewolf.top/.gitignore][Onedrive]].
+- README file: For creating an empty repository, I didn't check this option. I'll manually create the README file locally.
+- License: For creating an empty repository, I didn't check this option. The choice of license depends on the nature of your website's content and code. You can refer to [[https://choosealicense.com/][this]] or Google for specific licenses. I chose the CC-BY-NC-SA 4.0 license (Creative Commons) for this site, because:
+  1. All the technologies used for this site are open source. If I make any personalized changes to these technologies in the future, I want them to remain open source.
+  2. I allow others to reuse, remix, and build upon my publicly shared articles, works, images, etc., under the condition of attribution and non-commercial use. I also hope that derivative works follow the same license.
+  For more details about choosing a CC license version and using CC licenses, you can explore the [[https://creativecommons.org/choose/][CC license website]] and the [[https://creativecommons.org/about/cclicenses/][detailed information about CC licenses]].  
+
+*** 2.2 Preparing the Git Project for Github
+In the local Git project directory of your website, you should configure the ~README.md~, ~.gitignore~, and ~license.txt~ files as needed. With PowerShell open in the current directory, you can use the following commands: Use\\
+~git status~\\
+to view the files that have been modified but not yet saved to Git. Use\\
+~git add .~\\
+to mark all the modified but unsaved files in the current directory. Use\\
+~git commit -m 'first commit'~ \\
+to save the changes of the files to Git, with the message 'first commit' as a comment.\\
+
+Finally, in GitHub, navigate to your newly created repository, and follow the prompts. In PowerShell, enter the following commands in sequence:
+#+begin_src
+git remote add origin git@github.com:<Your-github-id>/<Your-repo>.git
+git branch -M master
+git push -u origin master
+#+end_src
+
+If everything goes smoothly, after you've completed the ~push~ in the command prompt, you can refresh the GitHub repository page. There, you should be able to see the website source files that you've just uploaded.
+
+*** 2.3 git push!
+#+begin_src
+  git add
+  git commit
+  git push
+#+end_src
+
+Each time you need to update the website, you just need to follow these three steps: "Stage the changes to be saved", "Save the changes", and "Upload the changes".
+
+*** 2.4 Another Optional Approach
+Clearly, in the above method, I uploaded all the source code of the website to the git repository.
+
+#+begin_quote
+
+The reason for uploading the source code is as follows:
+
+1. Multi-platform authoring: I want the platform to generate the website, so even if the device I'm currently using (such as a mobile phone, tablet, etc.) doesn't have the environment required to run the website, I can focus on content creation. I can upload the edited content to GitHub via Git or the web to update the webpage.
+2. Backup and version control: One repository manages and backs up both the website's configuration files and content.
+   
+#+end_quote
+
+Of course, everyone's needs are different. Besides the method used by this site, you can also choose to only upload the files generated by Hugo in the ~/public~ directory of the website.
+This approach may offer stronger code and API privacy, and the repository would be more streamlined.
+
+Alternatively, you can combine both approaches. Store configuration files in one repository and webpage files in another...
+
+In conclusion, choose according to your own needs. Corresponding solutions can be found publicly available on the internet.
+
+** 3. Website Deployment
+Since the website source code has been uploaded to GitHub, you can actually deploy it directly using *GitHub Pages*. However, just before this, I successfully deployed my public Onedrive cloud drive using [[https://vercel.com][Vercel]], and I was impressed by the power of Vercel during that process. So, this time, I'll try deploying the website using Vercel. The process involves two steps:
+
+1. Create a Vercel project and link it with the website repository on GitHub.
+2. Configure commands and environment variables.
+
+*** Create and Link Vercel Project
+Register and log in to [[https://vercel.com][Vercel]]. Follow the instructions from [[https://vercel.com/docs/projects/overview][Vercel doc: overview]] and [[https://vercel.com/docs/deployments/git][Vercel doc: deploying git]] to create a Vercel project. Log in with your GitHub account and import the source code repository of your website.
+
+*** Configure Commands and Environment Variables
+1. Change the parameter of ~Configure Project -> Framework Preset~ to ~Hugo~.
+2. Add a key-value pair in ~Configure Project -> Environment Variables~: ~key: HUGO_VERSION, Value: 0.117.0~. (The version number should match the Hugo version you use.)
+3. (This command is provided by the Monochrome theme)\\
+   Check ~Configure Project -> Build Command -> Override~: and change this parameter to ~hugo --environment production --minify~.
+4. (This command is provided by the Monochrome theme)\\
+   Check ~Configure Project -> Development Command -> Override~: and change this parameter to ~hugo server --environment production~.
+5. Press ~Deploy~, grab a cup of coffee, and wait a bit. Your website will be deployed shortly.
+   
+** Custom Domain
+After successfully deploying your website on Vercel, you'll be provided with a link that ends with ~<UserID>.vercel.app~ for accessing your deployed site. This link is not user-friendly, making it inconvenient for sharing and promoting your website.
+
+This article doesn't cover the process of domain registration.\\
+
+However, if you already have a domain, you can enter it in the project settings page ~Project Settings -> Domains~ on Vercel. Vercel will provide instructions on how to configure the DNS settings with your domain registrar.
+
+-----
+#+begin_quote
+The article concludes here.
+
+Considering the length, I've omitted quite a few details in the text.\\
+If necessary, I might open up new posts in the future to elaborate on the parts that were left out.
+
+Thank you for reading!\\
+:)
+#+end_quote
+
 
 #+BEGIN_EXPORT HTML
 <script src="https://giscus.app/client.js"
