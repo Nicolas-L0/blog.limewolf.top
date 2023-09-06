@@ -9,6 +9,5 @@ balloon_resources: "about_content"
 zooming_js: false
 
 ---
-About me... page under construction.
 
 {{< icon vendor="feather" name="github" link="https://github.com/Nicolas-L0/limewolf.top" >}}

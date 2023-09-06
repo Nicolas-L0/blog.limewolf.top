@@ -7,6 +7,6 @@ balloon_img_src_dark: "icons/balloon_dark.svg"
 balloon_circle: false
 balloon_resources: "storyline"
 ---
-个人网站逐步搭建中...
+Gradually building my personal website...
 
-{{< icon vendor="feather" name="github" link="https://github.com/Nicolas-L0/limewolf.top" >}}
+{{< icon vendor="feather" name="github" link="https://github.com/Nicolas-L0/blog.limewolf.top" >}}
