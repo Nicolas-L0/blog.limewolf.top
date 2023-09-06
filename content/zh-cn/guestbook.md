@@ -1,5 +1,5 @@
 ---
-title: guestbook
+title: 访客留言板
 author: "Limewolf"
 description: ""
 date: 2023-08-27T11:09:54+08:00
@@ -11,7 +11,7 @@ search_hidden: true
 toc: false
 ---
 
-# <center>🐺Feel free to leave something!🐺</center>
+# <center>🐺可以留下你的足迹哦~🐺</center>
 
 <script src="https://giscus.app/client.js"
         data-repo="Nicolas-L0/blog.limewolf.top"
