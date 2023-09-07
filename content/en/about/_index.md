@@ -10,4 +10,6 @@ zooming_js: false
 
 ---
 
-{{< icon vendor="feather" name="github" link="https://github.com/Nicolas-L0/limewolf.top" >}}
+{{< icon vendor="feather" name="github" link="https://github.com/Nicolas-L0" >}}
+{{< icon vendor="feather" name="mail" link="mailto:limewolf.top@outlook.com" >}}
+{{< icon vendor="feather" name="tv" link="https://space.bilibili.com/691717436/" >}}
