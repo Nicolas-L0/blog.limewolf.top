@@ -6,6 +6,8 @@ defaultContentLanguage = "zh-cn"
 enableEmoji = true
 paginate = 5
 enableGitInfo = true
+googleAnalytics = "G-L0VX1GGSP1"
+
 
 [taxonomies]
 category = "categories"
