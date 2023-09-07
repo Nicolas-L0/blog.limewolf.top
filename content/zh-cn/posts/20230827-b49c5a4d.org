@@ -2,7 +2,7 @@
 #+author: "Limewolf"
 #+description: "基于个人实践经验简单介绍了如何使用giscus为Hugo博客中org-mode的文章建立评论区"
 #+date: 2023-08-27T13:23:50+08:00
-#+keywords[]: hugo github discus org-mode
+#+keywords[]: hugo github giscus org-mode
 #+tags[]: hugo blog giscus org-mode
 #+categories[]: 博客技术
 #+series[]: Hugo历险记
@@ -18,7 +18,7 @@ This post is also available in: [[/en/posts/20230827_en-b49c5a4d/][English]]
 
 * 使用giscus为org-mode的Hugo博客文章建立评论区
 
-** 1. discus简介
+** 1. giscus简介
 [[https://github.com/giscus/giscus][giscus]]，一款基于[[https://docs.github.com/en/discussions][Github Discussions]]的评论区系统，它与另一款基于Github Issues的评论区系统[[https://utteranc.es/][utterances]]极为神似。
 
 giscus的作者[[https://laymonage.com/][laymonage]] (Sage Abdullahe)在其博客的[[https://laymonage.com/posts/giscus][Introducing giscus]]一文中提到：

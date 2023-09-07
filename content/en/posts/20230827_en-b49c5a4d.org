@@ -1,9 +1,9 @@
-#+title: Setting Up a Comment Section With Disqus for Org-Mode Hugo Blog Posts
+#+title: Setting Up a Comment Section With gisqus for Org-Mode Hugo Blog Posts
 #+author: "Limewolf"
-#+description: "A Brief Guide on How to Set Up a Comment Section Using Disqus for Org-Mode Articles in Hugo Blogs"
+#+description: "A Brief Guide on How to Set Up a Comment Section Using gisqus for Org-Mode Articles in Hugo Blogs"
 #+date: 2023-08-27T13:23:50+08:00
-#+keywords[]: hugo github discus org-mode
-#+tags[]: hugo blog discus org-mode
+#+keywords[]: hugo github giscus org-mode
+#+tags[]: hugo blog giscus org-mode
 #+categories[]: Blog_Technology
 #+series[]: Hugo_Adventure
 
