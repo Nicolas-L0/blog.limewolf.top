@@ -13,6 +13,6 @@ keywords:
 ---
 
 {{< icon vendor="feather" name="github" link="https://github.com/Nicolas-L0/blog.limewolf.top" >}}
-{{< icon vendor="feather" name="rss" link="https://blog.limewolf.top/index.xml" >}}
+{{< icon vendor="feather" name="rss" link="https://blog.limewolf.top/en/index.xml" >}}
 
 
