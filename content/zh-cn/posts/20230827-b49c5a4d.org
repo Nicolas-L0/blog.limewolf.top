@@ -3,7 +3,7 @@
 #+description: "基于个人实践经验简单介绍了如何使用giscus为Hugo博客中org-mode的文章建立评论区"
 #+date: 2023-08-27T13:23:50+08:00
 #+keywords[]: hugo github giscus org-mode
-#+tags[]: hugo blog giscus org-mode
+#+tags[]: hugo 博客 giscus org-mode
 #+categories[]: 博客技术
 #+series[]: Hugo历险记
 

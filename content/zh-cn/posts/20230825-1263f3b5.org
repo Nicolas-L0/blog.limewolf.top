@@ -3,7 +3,7 @@
 #+description: "个人如何使用Hugo+Vercel从0建站的参考"
 #+date: 2023-08-26T02:56:54+08:00
 #+keywords[]: hugo vercel github
-#+tags[]: hugo vercel blog
+#+tags[]: hugo vercel 博客
 #+categories[]: 博客技术
 #+series[]: Hugo历险记 探索Vercel
 
