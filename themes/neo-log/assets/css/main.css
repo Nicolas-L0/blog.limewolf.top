@@ -22,6 +22,14 @@
   --font-body: Space Grotesk, sans-serif;
 }
 
+/* --- Mobile Menu (glassmorphism) --- */
+#mobile-menu {
+  background: linear-gradient(135deg, rgba(49, 50, 111, 0.25) 0%, rgba(40, 41, 92, 0.35) 100%);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
 /* --- Base Reset --- */
 html {
   scroll-behavior: smooth;
