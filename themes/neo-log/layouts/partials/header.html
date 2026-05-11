@@ -1,0 +1,104 @@
+<header class="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
+  <nav class="flex items-center justify-between px-6 md:px-8 py-6 max-w-[1600px] mx-auto md:bg-transparent bg-black/20 backdrop-blur-md">
+    <!-- Site name -->
+    <div class="flex-shrink-0">
+      <a href="{{ "" | relLangURL }}" class="font-heading text-xl md:text-2xl font-bold tracking-tighter text-white no-underline hover:opacity-80 transition-opacity">
+        {{ .Site.Title }}
+      </a>
+    </div>
+
+    <!-- Desktop menu (md+) -->
+    <div class="hidden md:flex items-center gap-6 md:gap-8 text-xs md:text-sm font-bold tracking-widest uppercase">
+      {{ $currentPage := . }}
+      {{ range .Site.Menus.navbar }}
+        {{ $isActive := or ($currentPage.IsMenuCurrent "navbar" .) ($currentPage.HasMenuCurrent "navbar" .) }}
+        <a href="{{ .URL | relLangURL }}"
+           class="text-white no-underline transition-colors duration-300 {{ if $isActive }}text-neo-mint{{ else }}hover:text-neo-mint{{ end }}">
+          {{ .Name }}
+        </a>
+      {{ end }}
+
+      {{ if .IsTranslated }}
+      <div class="flex items-center gap-2 text-xs tracking-wider border-l border-white/20 pl-6">
+        {{ range .Translations }}
+        <a href="{{ .Permalink }}" class="text-white/60 hover:text-white no-underline transition-colors duration-300">
+          {{ .Language.LanguageName }}
+        </a>
+        {{ end }}
+        <span class="text-white font-heading">{{ .Language.LanguageName }}</span>
+      </div>
+      {{ end }}
+    </div>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-[#31326f]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden">
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.navbar }}
+      {{ $isActive := or ($currentPage.IsMenuCurrent "navbar" .) ($currentPage.HasMenuCurrent "navbar" .) }}
+      <a href="{{ .URL | relLangURL }}"
+         class="text-3xl md:text-4xl font-heading font-bold text-white no-underline transition-colors duration-300 {{ if $isActive }}text-neo-mint{{ else }}hover:text-neo-mint{{ end }}"
+         onclick="toggleMenu()">
+        {{ .Name }}
+      </a>
+    {{ end }}
+
+    {{ if .IsTranslated }}
+    <div class="mt-8 flex items-center gap-4 text-sm tracking-widest uppercase">
+      <span class="text-white/40">🌐</span>
+      {{ range .Translations }}
+      <a href="{{ .Permalink }}"
+         class="text-white/60 hover:text-white no-underline transition-colors duration-300 font-bold"
+         onclick="toggleMenu()">
+        {{ .Language.LanguageName }}
+      </a>
+      {{ end }}
+      <span class="text-white font-heading">{{ .Language.LanguageName }}</span>
+    </div>
+    {{ end }}
+
+    <div class="absolute bottom-10 flex gap-6">
+      <a href="https://github.com/Nicolas-L" target="_blank" rel="noopener noreferrer" class="text-white/50 hover:text-white transition-colors no-underline text-sm">GitHub</a>
+    </div>
+  </div>
+
+  <!-- Hamburger button (mobile) — outside overlay, at end of header for correct stacking -->
+  <button id="menu-toggle" class="md:hidden fixed top-6 right-6 w-10 h-10 flex items-center justify-center text-white bg-transparent border-none cursor-pointer z-[70]" aria-label="Toggle menu">
+    <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+</header>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+  if (!menu || !iconOpen || !iconClose) return;
+  const isOpen = !menu.classList.contains('hidden');
+  if (isOpen) {
+    menu.classList.add('hidden');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    document.body.style.overflow = '';
+  } else {
+    menu.classList.remove('hidden');
+    iconOpen.classList.add('hidden');
+    iconClose.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+}
+// Toggle button
+document.getElementById('menu-toggle')?.addEventListener('click', toggleMenu);
+// Close on overlay background click (not on links)
+document.getElementById('mobile-menu')?.addEventListener('click', function(e) {
+  if (e.target === this) toggleMenu();
+});
+</script>

@@ -1,13 +1,13 @@
-baseURL = 'https://blog.limewolf.top'
+baseURL = "https://blog.limewolf.top"
 languageCode = "zh-cn"
-title = '莱姆狼🐺的小窝'
-theme = 'hugo-theme-monochrome'
+title = "Limewolf的小窝"
+theme = "neo-log"
 defaultContentLanguage = "zh-cn"
 enableEmoji = true
-paginate = 5
 enableGitInfo = true
-googleAnalytics = "G-L0VX1GGSP1"
 
+[pagination]
+pagerSize = 5
 
 [taxonomies]
 category = "categories"
@@ -16,3 +16,7 @@ series = "series"
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]
+
+[services]
+[services.googleAnalytics]
+ID = "G-L0VX1GGSP1"

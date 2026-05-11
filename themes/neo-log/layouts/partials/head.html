@@ -1,0 +1,9 @@
+{{- /* This block is reserved for additional head elements from the user or child templates */ -}}
+{{- with .OutputFormats.Get "RSS" -}}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{- end -}}
+{{- if hugo.IsProduction -}}
+  <meta name="robots" content="index, follow">
+{{- else -}}
+  <meta name="robots" content="noindex, nofollow">
+{{- end -}}

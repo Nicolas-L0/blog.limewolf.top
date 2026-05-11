@@ -1,0 +1,28 @@
+{{ $style := .Get "style" }}
+
+{{/* Default: dark theme neutral */}}
+{{ $bg_color := "#2a2a3d" }}
+{{ $border_color := "#4a4a6d" }}
+{{ $text_color := "#d1d1e0" }}
+
+{{ if eq $style "error" }}
+  {{ $bg_color = "#1a2238" }}
+  {{ $border_color = "#4fb7b3" }}
+  {{ $text_color = "#a8cce0" }}
+{{ else if eq $style "warning" }}
+  {{ $bg_color = "#2d2815" }}
+  {{ $border_color = "#8a7a2b" }}
+  {{ $text_color = "#f0e0a0" }}
+{{ else if eq $style "info" }}
+  {{ $bg_color = "#1a2633" }}
+  {{ $border_color = "#2a5a7a" }}
+  {{ $text_color = "#a8d0e8" }}
+{{ else if eq $style "success" }}
+  {{ $bg_color = "#1a2d1a" }}
+  {{ $border_color = "#3a7a3a" }}
+  {{ $text_color = "#a8e0a8" }}
+{{ end }}
+
+<div class="color-block" style="background-color: {{ $bg_color }}; color: {{ $text_color }}; border-left: 4px solid {{ $border_color }}; border-radius: 8px; padding: 1.5rem 2rem; margin: 1.5rem 0; line-height: 1.8; font-size: 0.95rem;">
+  {{ .Inner | safeHTML }}
+</div>

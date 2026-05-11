@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'neo-bg': '#31326f',
+            'neo-bg-deep': '#1f2048',
+            'neo-bg-light': '#28295c',
+            'neo-mint': '#a8fbd3',
+            'neo-teal': '#4fb7b3',
+            'neo-peri': '#637ab9',
+          },
+          'fontFamily': {
+            heading: [Syncopate, sans-serif],
+            body: [Space Grotesk, sans-serif],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Main Stylesheet -->
+  {{ $css := resources.Get "css/main.css" | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+  {{- block "head" . }}{{ partial "head.html" . }}{{ end }}
+
+  <!-- Cursor hide on desktop -->
+  <style>
+    @media (min-width: 768px) {
+      body { cursor: none; }
+      a, button, [data-hover] { cursor: none; }
+    }
+  </style>
+</head>
+<body class="font-body bg-neo-bg text-white min-h-screen overflow-x-hidden">
+  {{- block "header" . }}{{ partial "header.html" . }}{{ end }}
+
+  <!-- Custom Cursor -->
+  <div id="neo-cursor" class="hidden md:block fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference" style="transform: translate3d(-100px, -100px, 0); will-change: transform;">
+    <div id="neo-cursor-inner" class="rounded-full bg-white flex items-center justify-center shadow-[0_0_10px_rgba(255,255,255,0.3)]" style="width: 80px; height: 80px; transition: transform 0.12s cubic-bezier(0.33, 1, 0.68, 1);">
+      <span id="neo-cursor-text" class="text-black font-black uppercase tracking-widest text-sm select-none" style="opacity: 0; transition: opacity 0.15s;">View</span>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var cursor = document.getElementById('neo-cursor');
+      if (!cursor) return;
+      var inner = cursor.querySelector('#neo-cursor-inner');
+      var text = cursor.querySelector('#neo-cursor-text');
+
+      var mx = -200, my = -200;
+      var cx = -200, cy = -200;
+
+      document.addEventListener('mousemove', function(e) {
+        mx = e.clientX;
+        my = e.clientY;
+
+        var el = e.target;
+        var clickable = el.closest('a') || el.closest('button') || el.closest('[data-hover]');
+        if (inner) inner.style.transform = clickable ? 'scale(1.5)' : 'scale(1)';
+        if (text) text.style.opacity = clickable ? '1' : '0';
+      }, { passive: true });
+
+      function animate() {
+        cx += (mx - cx) * 0.18;
+        cy += (my - cy) * 0.18;
+        cursor.style.transform = 'translate3d(' + cx + 'px, ' + cy + 'px, 0) translate(-50%, -50%)';
+        requestAnimationFrame(animate);
+      }
+      animate();
+
+      document.addEventListener('mouseleave', function() { cursor.style.display = 'none'; });
+      document.addEventListener('mouseenter', function() { cursor.style.display = 'block'; });
+    })();
+  </script>
+
+  <main class="relative z-10">
+    {{- block "main" . }}{{- end }}
+  </main>
+
+  {{- block "footer" . }}{{ partial "footer.html" . }}{{ end }}
+
+  <!-- Custom CSS for animations and additional styles -->
+  <style>
+    :root {
+      --color-bg-deep: #1f2048;
+      --color-bg-mid: #31326f;
+      --color-bg-light: #28295c;
+      --color-mint: #a8fbd3;
+      --color-teal: #4fb7b3;
+      --color-periwinkle: #637ab9;
+      --color-blob-mint: rgba(168, 251, 211, 0.3);
+      --color-blob-teal: rgba(79, 183, 179, 0.2);
+      --color-blob-periwinkle: rgba(99, 122, 185, 0.2);
+      --color-white: #ffffff;
+      --color-white-soft: rgba(255, 255, 255, 0.9);
+      --color-gray: #d1d5db;
+      --color-gray-dark: #9ca3af;
+      --font-heading: Syncopate, sans-serif;
+      --font-body: Space Grotesk, sans-serif;
+    }
+  </style>
+</body>
+</html>

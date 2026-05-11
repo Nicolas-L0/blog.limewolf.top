@@ -1,0 +1,11 @@
+name = "neo-log"
+license = "MIT"
+licenselink = "https://github.com/limewolf/neo-log"
+description = "A Neo-Brutalist digital garden theme inspired by NEO.LOG"
+homepage = "https://limewolf.com"
+tags = ["blog", "minimal", "dark", "neo-brutalist"]
+min_version = "0.120.0"
+
+[author]
+  name = "Limewolf"
+  homepage = "https://limewolf.com"
